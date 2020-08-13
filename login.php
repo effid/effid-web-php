@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--===============================================================================================-->  
+  <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+  <!--===============================================================================================-->  
+  <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+  <!--===============================================================================================-->  
+  <link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="css/util.css">
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+  <!--===============================================================================================-->
+</head>
+<body>
+  <?php
+  require('db/config.php');
+  session_start();
+  if (isset($_POST['email'])){
+    $email = stripslashes($_REQUEST['email']);
+    $email = mysqli_real_escape_string($conn, $email);
+    $password = stripslashes($_REQUEST['password']);
+    $password = mysqli_real_escape_string($conn, $password);
+    $query = "SELECT * FROM `users` WHERE email='$email' and password='".hash('sha256', $password)."'";
+    $result = mysqli_query($conn,$query) or die(mysql_error());
+    $rows = mysqli_num_rows($result);
+
+    print_r($result);
+    $query2 = "SELECT * FROM `users` WHERE email='$email'";    
+    $reponse = $conn->query($query2);
+    while ($donnees = $reponse->fetch_assoc())
+    {
+      $_SESSION['id_user'] = $donnees['id_user'];
+    }
+    if($rows==1){
+      $_SESSION['email'] = $email;
+      header("Location: index.php");
+    }else{
+      $message = "Le nom d'utilisateur ou le mot de passe est incorrect.";
+    }
+  }
+  ?>
+  <div class="limiter">
+    <div class="container-login100" style="background-image: url('pictures/background.jpeg');">
+      <div class="wrap-login100">  
+        <form class="login100-form validate-form" action="" method="post" name="login">
+          <div class="container-login100-form-btn p-b-34 p-t-27">
+            <img class="logo2" src="pictures/Logo_blanc.png"/>
+          </div>
+
+          <div class="wrap-input100 validate-input" data-validate = "Enter an email">
+            <input class="input100" type="email" name="email" placeholder="Email">
+            <span class="focus-input100" data-placeholder="&#xf207;"></span>
+          </div>
+
+          <div class="wrap-input100 validate-input" data-validate="Enter password">
+            <input class="input100" type="password" name="password" placeholder="Password">
+            <span class="focus-input100" data-placeholder="&#xf191;"></span>
+          </div>
+
+          <div class="contact100-form-checkbox">
+            <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+            <label class="label-checkbox100" for="ckb1">
+              Remember me
+            </label>
+          </div>
+
+          <div class="container-login100-form-btn">
+            <button class="login100-form-btn">
+              Login
+            </button>
+          </div>
+
+          <div class="text-center p-t-90">
+            <a class="txt1" href="#">
+              Forgot Password?
+            </a>
+            <p class="text-center txt1">Vous êtes nouveau ici ? <a class="txt1" href="register.php">S'inscrire</a></p>
+            <?php if (! empty($message)) { ?>
+              <p class="txt1"><?php echo $message; ?></p>
+            <?php } ?>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div id="dropDownSelect1"></div>
+  
+  <!--===============================================================================================-->
+  <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+  <!--===============================================================================================-->
+  <script src="vendor/animsition/js/animsition.min.js"></script>
+  <!--===============================================================================================-->
+  <script src="vendor/bootstrap/js/popper.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+  <!--===============================================================================================-->
+  <script src="vendor/select2/select2.min.js"></script>
+  <!--===============================================================================================-->
+  <script src="vendor/daterangepicker/moment.min.js"></script>
+  <script src="vendor/daterangepicker/daterangepicker.js"></script>
+  <!--===============================================================================================-->
+  <script src="vendor/countdowntime/countdowntime.js"></script>
+  <!--===============================================================================================-->
+  <script src="js/main.js"></script>
+</body>
+</html>
