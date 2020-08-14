@@ -48,9 +48,9 @@ div.centre {
   width: 50vw;
   height: 50vh;
   text-align: left;
-  border: solid 2px;
   padding: 20px; 
   border-radius: 40px;
+  box-shadow: 8px 8px 12px #aaa;
 }
 
 div.buttonCentre {
@@ -60,6 +60,36 @@ div.buttonCentre {
   text-align: center;
   border-radius: 40px;
   width: 30vw;
+}
+
+div.schedule {
+  margin: 5vh 0 0 10vw;
+  background-color: #FFFFFF;
+  width: 80vw;
+  height: 80vh;
+  text-align: left;
+  padding: 20px; 
+  border-radius: 40px;
+  box-shadow: 8px 8px 12px #aaa;
+}
+
+div.admin {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  background-color: #FFFFFF;
+  margin: 5vw auto;
+  width: 50vw;
+  height: 50vh;
+  text-align: left;
+  padding: 20px; 
+  border-radius: 40px;
+  box-shadow: 8px 8px 12px #aaa; 
+}
+
+.adminDiv{
+  margin: 3vh auto;
+  text-align: center;
 }
 
 table {
@@ -92,18 +122,18 @@ div.one {
   margin-right: 5vw;
   width: 50vw;
   height: 80vh;
-  border: solid 2px;
   padding: 20px; 
   border-radius: 40px;
+  box-shadow: 8px 8px 12px #aaa; 
 }
 
 div.two {
   background-color: #FFFFFF; 
   width: 50vw;
   height: 80vh;
-  border: solid 2px;
   padding: 20px; 
   border-radius: 40px;
+  box-shadow: 8px 8px 12px #aaa;
 }
 
 .one {

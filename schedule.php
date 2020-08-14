@@ -14,9 +14,14 @@ if(!isset($_SESSION["email"])){
 	<?php include 'css/style.php' ?>
 </head>
 <body>
-	
-
-	
+  <?php include 'header.php'; ?>
+  <form>
+    <div class="sucess">
+      <div class="schedule">
+              
+      </div>
+    </div>
+  </form>
 	<!--===============================================================================================-->
 	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
 	<!--===============================================================================================-->

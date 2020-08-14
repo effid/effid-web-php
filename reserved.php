@@ -61,7 +61,6 @@ if (isset($_REQUEST['Date'], $_REQUEST['nombresPersonnes'], $_REQUEST['debut'], 
 <body>
   <?php include 'header.php'; ?>
   <form>
-
     <div class="sucess">
       <div class="centre">
         <div class="form-group">
