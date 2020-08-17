@@ -9,7 +9,7 @@ if(!isset($_SESSION['id_user'])){
 			"verify_peer_name"=>false,
 		),
 	);  
-	$response = file_get_contents("https://apollonian.fr:10000/users/6", false, stream_context_create($arrContextOptions));
+	$response = file_get_contents("https://apollonian.fr:10000/users/4", false, stream_context_create($arrContextOptions));
 	$json = json_decode($response);
 	foreach($json as $item) {
 		$id_user = $item->id_user;
@@ -31,6 +31,6 @@ if(!isset($_SESSION['id_user'])){
 		} ?></a></span>
 		<span style="margin-right: 2vw"><a href="account.php"><?php echo $_SESSION["email"];?></a></span>
 		<span style="margin-right: 2vw"><a href="logout.php">Déconnexion</a></span>
-		<img width="50vw" style="background-color: #f5f3f2" src="pictures/Logo_blanc.png"/>
+		<a href="index.php"><img width="30vw" style="background-color: #f5f3f2" src="pictures/Logo_blanc.png"/></a>
 	</div>
 </div>
