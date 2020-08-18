@@ -68,31 +68,45 @@ foreach($json as $item) {
 			</div>
 			<?php 
 			$arrContextOptions=array(
+				'http'=>array('header' => "User-Agent:MyAgent/1.0\r\n"),
 				"ssl"=>array(
 					"verify_peer"=>false,
 					"verify_peer_name"=>false,
 				),
 			);  
 
-			$response = file_get_contents("https://api:10000/validations/user/".$id_user."", false, stream_context_create($arrContextOptions));
-			$json = json_decode($response);
 
-			foreach($json as $item) {
-				$numero_salle = $item->numero_salle;
-				$date = $item->date;
-				$intitule = $item->intitule;
-				$date= DateTime::createFromFormat('Y-m-d\TH:i:s+',$date)->format('Y-m-d');
-				echo '<div class="form-group" style="margin-left: 5vw">';
-				echo '<div class="row" >';
-				echo "Salle <input type='title' name='Nom' value=' {$numero_salle}' readonly/>";
-				echo "<input type='title' name='Prenom' value='{$date}' style='padding-left: 15vw; color: grey; opacity: 75%' readonly/>";
-				echo '</div>';
-				echo '<div class="row" style="margin: 0 0 5vh 2vw;">';
-				echo "<input type='title' name='Classe' value='$intitule' style='color: grey;' readonly/>";
-				echo '</div>';
-				echo '</div>';
-				echo "<hr/>";
+			set_error_handler(
+				function ($severity, $message, $file, $line) {
+					throw new ErrorException($message, $severity, $severity, $file, $line);
+				}
+			);
+
+			try {
+				$response = file_get_contents("https://apollonian.fr:10000/validations/user/".$id_user."", 'Test', stream_context_create($arrContextOptions));
+				$json = json_decode($response);
+				foreach($json as $item) {
+					$numero_salle = $item->numero_salle;
+					$date = $item->date;
+					$intitule = $item->intitule;
+					$date= DateTime::createFromFormat('Y-m-d\TH:i:s+',$date)->format('Y-m-d');
+					echo '<div class="form-group" style="margin-left: 5vw">';
+					echo '<div class="row" >';
+					echo "Salle <input type='title' name='Nom' value=' {$numero_salle}' readonly/>";
+					echo "<input type='title' name='Prenom' value='{$date}' style='padding-left: 15vw; color: grey; opacity: 75%' readonly/>";
+					echo '</div>';
+					echo '<div class="row" style="margin: 0 0 5vh 2vw;">';
+					echo "<input type='title' name='Classe' value='$intitule' style='color: grey;' readonly/>";
+					echo '</div>';
+					echo '</div>';
+					echo "<hr/>";
+				}
 			}
+			catch (Exception $e) {
+				echo "Vous n'avez pas de réservations validées";
+			}
+
+			restore_error_handler();
 			ob_end_flush();
 			
 			?>
