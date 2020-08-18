@@ -18,7 +18,6 @@ session_start();
     $result = mysqli_query($conn,$query) or die(mysql_error());
     $rows = mysqli_num_rows($result);
 
-    print_r($result);
     $query2 = "SELECT * FROM `users` WHERE email='$email'";    
     $reponse = $conn->query($query2);
     while ($donnees = $reponse->fetch_assoc())
