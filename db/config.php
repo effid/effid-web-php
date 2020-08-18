@@ -6,8 +6,11 @@ define('DB_PASSWORD', '');
 define('DB_NAME', 'effid');
  
 // Connexion à la base de données MySQL 
-$conn = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
- 
+//$conn = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
+$conn = mysqli_connect($_ENV["database"], $_ENV["MYSQL_USERNAME"], $_ENV["MYSQL_USER_PASSWORD"], $_ENV["MYSQL_DATABASE"]);
+
+
+
 // Vérifier la connexion
 if($conn === false){
     die("ERREUR : Impossible de se connecter. " . mysqli_connect_error());
