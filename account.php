@@ -74,7 +74,7 @@ foreach($json as $item) {
 				),
 			);  
 
-			$response = file_get_contents("https://api:10000/users/".$id_user."", false, stream_context_create($arrContextOptions));
+			$response = file_get_contents("https://api:10000/validations/user/".$id_user."", false, stream_context_create($arrContextOptions));
 			$json = json_decode($response);
 
 			foreach($json as $item) {
