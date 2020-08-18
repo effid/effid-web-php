@@ -28,21 +28,54 @@
 </head>
 <body>
   <?php
-  require('db/config.php');
   if (isset($_REQUEST['nom'], $_REQUEST['prenom'], $_REQUEST['email'], $_REQUEST['password'], $_REQUEST['passwordConfirmation'])){
-  // récupérer le nom d'utilisateur et supprimer les antislashes ajoutés par le formulaire
-    $nom = stripslashes($_REQUEST['nom']);
-    $username = mysqli_real_escape_string($conn, $nom); 
 
-    $prenom = stripslashes($_REQUEST['prenom']);
-    $prenom = mysqli_real_escape_string($conn, $prenom); 
-  // récupérer l'email et supprimer les antislashes ajoutés par le formulaire
-    $email = stripslashes($_REQUEST['email']);
-    $email = mysqli_real_escape_string($conn, $email);
-  // récupérer le mot de passe et supprimer les antislashes ajoutés par le formulaire
+
+    $nom = $_REQUEST['nom'];
+    $prenom = $_REQUEST['prenom']; 
+    $email = $_REQUEST['email'];
     $password = stripslashes($_REQUEST['password']);
     $confirmePassword = stripslashes($_REQUEST['passwordConfirmation']);
+
     if($password == $confirmePassword)
+    {
+
+      $response = array('nom' => $nom, "prenom" => $prenom, "email" => $email, "password" => $password, "id_puce" => 0, "id_type" => 2, "id_classe" => NULL);
+
+      $postString = http_build_query($response, '', '&');
+
+      $opts = array(
+        "ssl"=>array(
+          "verify_peer"=>false,
+          "verify_peer_name"=>false,
+        ),
+        'http' =>
+        array(
+          'method'  => 'POST',
+          'header'  => 'Content-type: application/x-www-form-urlencoded',
+          'content' =>  $postString
+        )
+      );
+
+# Create the context
+      $context = stream_context_create($opts);
+# Get the response (you can use this for GET)
+      $result = file_get_contents('https://apollonian.fr:10000/inscription', false, $context);
+
+      if($result){
+        echo "Erreur de connexion avec l'API";
+      }else{
+        header("Location: login.php");
+        exit(); 
+      }
+    }else{
+      $message = "Les mots de passe ne correspondent pas entre eux";
+      include 'register2.php'; 
+    }
+
+  }
+  include 'register2.php';
+    /*if($password == $confirmePassword)
     {
       $password = mysqli_real_escape_string($conn, $password);
   //requéte SQL + mot de passe crypté
@@ -53,6 +86,9 @@
       if($res){
         header("Location: login.php");
         exit(); 
+      }else{
+        $message = "la connexion avec la bdd n'est pas possible";
+        include 'register2.php';
       }
     }else{
       $message = "Les mots de passe ne correspondent pas entre eux";
@@ -60,7 +96,7 @@
     }
   }else{
     include 'register2.php'; 
-  } 
+  } */
   ?>
 </body>
 </html>
