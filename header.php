@@ -9,7 +9,7 @@ if(!isset($_SESSION['id_user'])){
 			"verify_peer_name"=>false,
 		),
 	);  
-	$response = file_get_contents("http://api/users/".$_SESSION['id_user']."", false, stream_context_create($arrContextOptions));
+	$response = file_get_contents("https://api:10000/users/".$_SESSION['id_user']."", false, stream_context_create($arrContextOptions));
 	$json = json_decode($response);
 	foreach($json as $item) {
 		$id_user = $item->id_user;

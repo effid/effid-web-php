@@ -1,6 +1,8 @@
 <?php
   // Initialiser la session
 session_start();
+ob_start();
+
   // Vérifiez si l'utilisateur est connecté, sinon redirigez-le vers la page de connexion
 if(!isset($_SESSION["email"])){
 	header("Location: login.php");
@@ -16,7 +18,7 @@ $arrContextOptions=array(
 	),
 );  
 
-$response = file_get_contents("http://api/users/".$id_user."", false, stream_context_create($arrContextOptions));
+$response = file_get_contents("https://api:10000/users/".$id_user."", false, stream_context_create($arrContextOptions));
 $json = json_decode($response);
 
 foreach($json as $item) {
@@ -72,7 +74,7 @@ foreach($json as $item) {
 				),
 			);  
 
-			$response = file_get_contents("http://api/validations/user/".$id_user."", false, stream_context_create($arrContextOptions));
+			$response = file_get_contents("https://api:10000/users/".$id_user."", false, stream_context_create($arrContextOptions));
 			$json = json_decode($response);
 
 			foreach($json as $item) {
@@ -91,6 +93,8 @@ foreach($json as $item) {
 				echo '</div>';
 				echo "<hr/>";
 			}
+			ob_end_flush();
+			
 			?>
 		</div>
 	</div>

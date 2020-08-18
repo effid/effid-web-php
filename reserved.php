@@ -1,6 +1,10 @@
 <?php
-  // Initialiser la session
 session_start();
+
+ob_start();
+
+
+  // Initialiser la session
   // Vérifiez si l'utilisateur est connecté, sinon redirigez-le vers la page de connexion
 if(!isset($_SESSION["email"])){
   if(!isset($_SESSION["id"])){
@@ -45,14 +49,15 @@ if (isset($_REQUEST['Date'], $_REQUEST['nombresPersonnes'], $_REQUEST['debut'], 
 # Create the context
   $context = stream_context_create($opts);
 # Get the response (you can use this for GET)
-  $result = file_get_contents('http://api/reservations', false, $context);
+  $result = file_get_contents('https://api:10000/reservations', false, $context);
   if($result){
     header("Location: index.php");
     exit(); 
   }
+  ob_end_flush();
+
 }
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>

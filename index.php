@@ -1,11 +1,16 @@
 <?php
   // Initialiser la session
 session_start();
+  ob_start();
+
   // Vérifiez si l'utilisateur est connecté, sinon redirigez-le vers la page de connexion
 if(!isset($_SESSION["email"])){
   header("Location: login.php");
   exit(); 
 }
+
+  ob_end_flush();
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -26,7 +31,7 @@ if(!isset($_SESSION["email"])){
         ),
       );  
       
-      $response = file_get_contents("http://api/salles", false, stream_context_create($arrContextOptions));
+      $response = file_get_contents("https://api:10000/salles", false, stream_context_create($arrContextOptions));
       $json = json_decode($response);
       ?>
       <table width="100%">

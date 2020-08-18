@@ -1,6 +1,8 @@
 <?php
   // Initialiser la session
 session_start();
+ob_start();
+
   // Vérifiez si l'utilisateur est connecté, sinon redirigez-le vers la page de connexion
 if(!isset($_SESSION["email"])){
   if(!isset($_SESSION["id"])){
@@ -37,12 +39,14 @@ if (isset($_REQUEST['Nom'], $_REQUEST['Effectifs'])){
 # Create the context
   $context = stream_context_create($opts);
 # Get the response (you can use this for GET)
-  $result = file_get_contents('http://api/classes', false, $context);
+  $result = file_get_contents('https://api:10000/classes', false, $context);
   if($result){
     header("Location: admin.php");
     exit(); 
   }
 }
+ob_end_flush();
+
 ?>
 
 <!DOCTYPE html>
@@ -69,7 +73,7 @@ if (isset($_REQUEST['Nom'], $_REQUEST['Effectifs'])){
             <input type="number" name="Effectifs" class="form-control"> 
           </div>
         </div>
-      
+        
       </div>
       <div class="buttonCentre">
         <button style="color: white; text-align: center;">

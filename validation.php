@@ -1,6 +1,8 @@
 <?php
   // Initialiser la session
 session_start();
+ob_start();
+
   // Vérifiez si l'utilisateur est connecté, sinon redirigez-le vers la page de connexion
 if(!isset($_SESSION["email"])){
 	header("Location: login.php");
@@ -35,6 +37,7 @@ if(!empty($_GET['id_reservation'])) {
 	}
 }
 
+ob_end_flush();
 
 ?>
 <!DOCTYPE html>
@@ -54,7 +57,7 @@ if(!empty($_GET['id_reservation'])) {
 				),
 			);  
 
-			$response = file_get_contents("http://api/reservations/attente", false, stream_context_create($arrContextOptions));
+			$response = file_get_contents("https://api:10000/reservations/attente", false, stream_context_create($arrContextOptions));
 			$json = json_decode($response);
 			?>
 
