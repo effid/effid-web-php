@@ -40,7 +40,7 @@ if (isset($_REQUEST['Numero'], $_REQUEST['Etage'], $_REQUEST['Type'], $_REQUEST[
 # Create the context
 	$context = stream_context_create($opts);
 # Get the response (you can use this for GET)
-	$result = file_get_contents('https://apollonian.fr:10000/salles', false, $context);
+	$result = file_get_contents('http://api/salles', false, $context);
 	if($result){
 		header("Location: admin.php");
 		exit(); 

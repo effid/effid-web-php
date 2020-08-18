@@ -28,7 +28,7 @@ if(!empty($_GET['id_reservation'])) {
 # Create the context
 	$context = stream_context_create($opts);
 # Get the response (you can use this for GET)
-	$result = file_get_contents("https://apollonian.fr:10000/reservations/validation/".$_GET['id_reservation']."", false, $context);
+	$result = file_get_contents("http://api/reservations/validation/".$_GET['id_reservation']."", false, $context);
 	if($result){
 		header("Location: admin.php");
 		exit(); 
@@ -54,7 +54,7 @@ if(!empty($_GET['id_reservation'])) {
 				),
 			);  
 
-			$response = file_get_contents("https://apollonian.fr:10000/reservations/attente", false, stream_context_create($arrContextOptions));
+			$response = file_get_contents("http://api/reservations/attente", false, stream_context_create($arrContextOptions));
 			$json = json_decode($response);
 			?>
 

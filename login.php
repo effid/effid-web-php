@@ -1,5 +1,6 @@
 <?php
 session_start();
+ob_start();
 ?>
 <!DOCTYPE html>
 <html>
@@ -70,7 +71,7 @@ session_start();
             <p class="text-center txt1">Vous êtes nouveau ici ? <a class="txt1" href="register.php">S'inscrire</a></p>
             <?php if (! empty($message)) { ?>
               <p class="txt1"><?php echo $message; ?></p>
-            <?php } ?>
+            <?php } ob_end_flush();?>
           </div>
         </form>
       </div>

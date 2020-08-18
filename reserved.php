@@ -45,7 +45,7 @@ if (isset($_REQUEST['Date'], $_REQUEST['nombresPersonnes'], $_REQUEST['debut'], 
 # Create the context
   $context = stream_context_create($opts);
 # Get the response (you can use this for GET)
-  $result = file_get_contents('https://apollonian.fr:10000/reservations', false, $context);
+  $result = file_get_contents('http://api/reservations', false, $context);
   if($result){
     header("Location: index.php");
     exit(); 

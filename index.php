@@ -26,7 +26,7 @@ if(!isset($_SESSION["email"])){
         ),
       );  
       
-      $response = file_get_contents("https://apollonian.fr:10000/salles", false, stream_context_create($arrContextOptions));
+      $response = file_get_contents("http://api/salles", false, stream_context_create($arrContextOptions));
       $json = json_decode($response);
       ?>
       <table width="100%">

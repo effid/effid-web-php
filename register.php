@@ -60,7 +60,7 @@
 # Create the context
       $context = stream_context_create($opts);
 # Get the response (you can use this for GET)
-      $result = file_get_contents('https://apollonian.fr:10000/inscription', false, $context);
+      $result = file_get_contents('http://api/inscription', false, $context);
 
       if($result){
         echo "Erreur de connexion avec l'API";
