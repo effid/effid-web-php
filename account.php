@@ -83,7 +83,7 @@ foreach($json as $item) {
 			);
 
 			try {
-				$response = file_get_contents("https://apollonian.fr:10000/validations/user/".$id_user."", 'Test', stream_context_create($arrContextOptions));
+				$response = file_get_contents("https://api:10000/validations/user/".$id_user."", 'Test', stream_context_create($arrContextOptions));
 				$json = json_decode($response);
 				foreach($json as $item) {
 					$numero_salle = $item->numero_salle;
