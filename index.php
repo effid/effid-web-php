@@ -1,7 +1,7 @@
 <?php
   // Initialiser la session
 session_start();
-  ob_start();
+ob_start();
 
   // Vérifiez si l'utilisateur est connecté, sinon redirigez-le vers la page de connexion
 if(!isset($_SESSION["email"])){
@@ -9,7 +9,7 @@ if(!isset($_SESSION["email"])){
   exit(); 
 }
 
-  ob_end_flush();
+ob_end_flush();
 
 ?>
 <!DOCTYPE html>
@@ -33,6 +33,7 @@ if(!isset($_SESSION["email"])){
       
       $response = file_get_contents("https://api:10000/salles", false, stream_context_create($arrContextOptions));
       $json = json_decode($response);
+
       ?>
       <table width="100%">
         <theads>

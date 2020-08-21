@@ -19,8 +19,8 @@ if(!isset($_SESSION["type"]) || !isset($_SESSION["email"])){
 		<div>
 			<h3 style="text-align: center; margin: 2vh auto;">Partie Administrative</h3>
 		</div>
-		<div class="adminDiv"><a href="createClasses.php" class="btn btn-primary">Création des salles</a></div>
-		<div class="adminDiv"><a style="padding: 150vw auto;" href="createRoom.php" class="btn btn-primary">Création des classses</a></div>
+		<div class="adminDiv"><a href="createRoom.php" class="btn btn-primary">Création des salles</a></div>
+		<div class="adminDiv"><a style="padding: 150vw auto;" href="createClasses.php" class="btn btn-primary">Création des classes</a></div>
 		<div class="adminDiv"><a href="validation.php" class="btn btn-primary">Acceptation des réservations</a></div>
 	</div>
 </body>

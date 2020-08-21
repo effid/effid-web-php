@@ -20,15 +20,12 @@ if(!isset($_SESSION['id_user'])){
 		$_SESSION['type'] = $type;
 	}
 };
-
 ?>
 
 <div class="header">
-	<!-- <a href=""><i class="material-icons">&#xe8b8;</i></a> -->
+	<a href="index.php">Accueil</a>
 	<div class="header-right">
-		<span style="margin-right: 2vw"><a href="admin.php"><?php if($type == 1) {
-			echo "Admin";	
-		} ?></a></span>
+		<span style="margin-right: 2vw"><a href="admin.php"><?php if($type == 1) { echo "Admin"; } ?></a></span>
 		<span style="margin-right: 2vw"><a href="account.php"><?php echo $_SESSION["email"];?></a></span>
 		<span style="margin-right: 2vw"><a href="logout.php">Déconnexion</a></span>
 		<a href="index.php"><img width="30vw" style="background-color: #f5f3f2" src="pictures/Logo_blanc.png"/></a>

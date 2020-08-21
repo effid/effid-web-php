@@ -7,16 +7,33 @@ ob_start();
   // Initialiser la session
   // Vérifiez si l'utilisateur est connecté, sinon redirigez-le vers la page de connexion
 if(!isset($_SESSION["email"])){
-  if(!isset($_SESSION["id"])){
-    header("Location: index.php");
-    exit(); 
-  }
   header("Location: login.php");
+  exit(); 
+}
+if(!isset($_GET["id_salle"]) || !isset($_GET["numero"])){
+  header("Location: index.php");
   exit(); 
 }
 
 $id_salle = $_GET["id_salle"];
 $numero = $_GET["numero"];
+
+$arrContextOptions=array(
+  "ssl"=>array(
+    "verify_peer"=>false,
+    "verify_peer_name"=>false,
+  ),
+);
+
+$response = file_get_contents("https://api:10000/salles/".$id_salle."", false, stream_context_create($arrContextOptions));
+$json = json_decode($response);
+
+foreach($json as $item)
+{
+  $capacite = $item->capacite;
+}
+
+$today = date('Y-m-d');
 
 if (isset($_REQUEST['Date'], $_REQUEST['nombresPersonnes'], $_REQUEST['debut'], $_REQUEST['fin'], $_REQUEST['intitule'])){
 
@@ -28,7 +45,6 @@ if (isset($_REQUEST['Date'], $_REQUEST['nombresPersonnes'], $_REQUEST['debut'], 
   $id_salle = $_REQUEST['id_salle'];
   $numero = $_REQUEST['numero'];
 
-  //TODO: Voir comment récuperer id_user
   $response = array('id_user' => $_SESSION['id_user'], 'date' => $date, "heure_debut" => $debut, "heure_fin" => $fin, "intitule" => $intitule, "nb_personnes" => $nbPersonnes, "id_salle" => $id_salle, "id_prof" => NULL);
 
   $postString = http_build_query($response, '', '&');
@@ -45,7 +61,6 @@ if (isset($_REQUEST['Date'], $_REQUEST['nombresPersonnes'], $_REQUEST['debut'], 
       'content' =>  $postString
     )
   );
-
 # Create the context
   $context = stream_context_create($opts);
 # Get the response (you can use this for GET)
@@ -55,7 +70,6 @@ if (isset($_REQUEST['Date'], $_REQUEST['nombresPersonnes'], $_REQUEST['debut'], 
     exit(); 
   }
   ob_end_flush();
-
 }
 ?>
 <!DOCTYPE html>
@@ -75,11 +89,11 @@ if (isset($_REQUEST['Date'], $_REQUEST['nombresPersonnes'], $_REQUEST['debut'], 
         <div class="row">
           <div class="form-group col-6">
             <label>Date: </label>
-            <input type="Date" name="Date" class="form-control"> 
+            <input type="Date" name="Date" min="<?php echo $today ?>" class="form-control"> 
           </div>
           <div class="form-group col-6">
             <label>Nombre de Personnes: </label>
-            <input type="number" name="nombresPersonnes" class="form-control"> 
+            <input type="number" name="nombresPersonnes" class="form-control" min="1" max="<?php echo $capacite ?>"> 
           </div>
         </div>
 
@@ -104,7 +118,7 @@ if (isset($_REQUEST['Date'], $_REQUEST['nombresPersonnes'], $_REQUEST['debut'], 
       </div>
       <div class="buttonCentre">
         <button style="color: white; text-align: center;">
-          Register
+          Réserver
         </button>
       </div>
     </div>

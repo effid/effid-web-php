@@ -14,14 +14,7 @@ if(!isset($_SESSION["email"])){
 	<?php include 'css/style.php' ?>
 </head>
 <body>
-  <?php include 'header.php'; ?>
-  <form>
-    <div class="sucess">
-      <div class="schedule">
-              
-      </div>
-    </div>
-  </form>
+	<?php include 'header.php'; ?>
 	<!--===============================================================================================-->
 	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
 	<!--===============================================================================================-->
@@ -37,6 +30,6 @@ if(!isset($_SESSION["email"])){
 	<!--===============================================================================================-->
 	<script src="vendor/countdowntime/countdowntime.js"></script>
 	<!--===============================================================================================-->
-	<script src="js/main.js"></script>  
+	<script src="js/main.js"></script>
 </body>
 </html>

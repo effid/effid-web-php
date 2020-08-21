@@ -40,7 +40,7 @@
     if($password == $confirmePassword)
     {
 
-      $response = array('nom' => $nom, "prenom" => $prenom, "email" => $email, "password" => $password, "id_puce" => 0, "id_type" => 2, "id_classe" => NULL);
+      $response = array('nom' => $nom, "prenom" => $prenom, "email" => $email, "password" => hash('sha256', $password), "id_puce" => 0, "id_type" => 2, "id_classe" => NULL);
 
       $postString = http_build_query($response, '', '&');
 
@@ -75,28 +75,7 @@
 
   }
   include 'register2.php';
-    /*if($password == $confirmePassword)
-    {
-      $password = mysqli_real_escape_string($conn, $password);
-  //requéte SQL + mot de passe crypté
-      $query = "INSERT into `users` (nom, prenom, email, password, id_puce, id_type, id_classe)
-      VALUES ('$nom', '$prenom', '$email', '".hash('sha256', $password)."', 1, 1, 1);";
-  // Exécuter la requête sur la base de données
-      $res = mysqli_query($conn, $query);
-      if($res){
-        header("Location: login.php");
-        exit(); 
-      }else{
-        $message = "la connexion avec la bdd n'est pas possible";
-        include 'register2.php';
-      }
-    }else{
-      $message = "Les mots de passe ne correspondent pas entre eux";
-      include 'register2.php';
-    }
-  }else{
-    include 'register2.php'; 
-  } */
+
   ?>
 </body>
 </html>

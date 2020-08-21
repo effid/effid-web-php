@@ -40,7 +40,7 @@ foreach($json as $item) {
 	<div class="box">
 		<div class="one">
 			<div class="form-group">
-				<h3 style="text-align: center; margin: 2vh 0 5vh 0">GENERAL</h3>
+				<h3 style="text-align: center; margin: 2vh 0 5vh 0">General</h3>
 				<hr>
 			</div>
 			<div class="form-group" >
