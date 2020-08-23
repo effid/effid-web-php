@@ -1,5 +1,5 @@
 hr {
-	opacity: 50%;
+	opacity: 75%;
 }
 
 .header {
@@ -66,11 +66,20 @@ div.buttonCentre {
   width: 30vw;
 }
 
+div.button {
+  margin: 2vw auto;
+  padding: 1vh;
+  background-color: #A12F6F;
+  text-align: center;
+  border-radius: 40px;
+  width: 30vw;
+}
+
 div.schedule {
-  margin: 5vh 0 0 10vw;
+  margin: 0vh 0 0 10vw;
   background-color: #FFFFFF;
   width: 80vw;
-  height: 80vh;
+  height: 78vh;
   text-align: left;
   padding: 20px; 
   border-radius: 40px;
@@ -89,6 +98,13 @@ div.admin {
   padding: 20px; 
   border-radius: 40px;
   box-shadow: 8px 8px 12px #aaa; 
+}
+
+.txt-danger {
+  font-family: Poppins-Regular;
+  font-size: 20px;
+  color: red;
+  line-height: 1.5;
 }
 
 .adminDiv{
@@ -155,5 +171,13 @@ div.two {
   
   .header-right {
     float: none;
+  }
+
+
+}
+
+@media screen and (min-width: 200px) and (max-width: 640px) {
+  div.schedule {
+    height: 100vh;
   }
 }

@@ -1,5 +1,4 @@
-
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta charset="UTF-8">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1">    
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -26,4 +25,5 @@
 <link rel="stylesheet" type="text/css" href="css/util.css">
 <link rel="stylesheet" type="text/css" href="css/main.css">
 <link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.css" />
 <!--===============================================================================================-->

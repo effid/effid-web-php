@@ -31,7 +31,7 @@ ob_end_flush();
         ),
       );  
       
-      $response = file_get_contents("https://api:10000/salles", false, stream_context_create($arrContextOptions));
+      $response = file_get_contents("https://apollonian.fr:10000/salles/dispoNow", false, stream_context_create($arrContextOptions));
       $json = json_decode($response);
 
       ?>
@@ -50,7 +50,7 @@ ob_end_flush();
             echo "<tr>";
             echo "<th>Salle: {$numero}</th>";
             echo "<th>Type : {$type}</th>";
-            echo "<th><a value='Réservez' class='btn btn-primary' href='reserved.php?numero={$numero}&id_salle={$id_salle}'>Réserver</button></th>";
+            echo "<th><a value='Réservez' class='btn btn-primary' href='reserved.php?numero={$numero}&id_salle={$id_salle}&date={$date}'>Réserver</button></th>";
             echo "</tr>";
             echo "<tr>";
             echo "<td style='font-size: 0.75em'>Capacité : {$capacite} </td>";
@@ -60,7 +60,6 @@ ob_end_flush();
         </tbody>
       </table>
     </div>
-
     <div class="buttonCentre">
       <a style="color: white" href="schedule.php">Voir le calendrier</a>
     </div>

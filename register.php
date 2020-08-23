@@ -40,7 +40,7 @@
     if($password == $confirmePassword)
     {
 
-      $response = array('nom' => $nom, "prenom" => $prenom, "email" => $email, "password" => hash('sha256', $password), "id_puce" => 0, "id_type" => 2, "id_classe" => NULL);
+      $response = array('nom' => $nom, "prenom" => $prenom, "email" => $email, "password" => hash('sha256', $password), "id_puce" => " ", "id_type" => 2, "id_classe" => NULL);
 
       $postString = http_build_query($response, '', '&');
 

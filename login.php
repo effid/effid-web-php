@@ -5,7 +5,7 @@ ob_start();
 <!DOCTYPE html>
 <html>
 <head>
-<?php include 'css/style.php' ?>
+  <?php include 'css/style.php' ?>
 </head>
 <body>
   <?php 
@@ -51,13 +51,9 @@ ob_start();
             <span class="focus-input100" data-placeholder="&#xf191;"></span>
           </div>
 
-          <div class="contact100-form-checkbox">
-            <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
-            <label class="label-checkbox100" for="ckb1">
-              Remember me
-            </label>
-          </div>
-
+          <?php if (! empty($message)) { ?>
+            <p class="txt-danger"><?php echo $message; ?></p>
+          <?php }  echo "<br/>"; ob_end_flush();?>
           <div class="container-login100-form-btn">
             <button class="login100-form-btn">
               Login
@@ -69,9 +65,6 @@ ob_start();
               Forgot Password?
             </a>
             <p class="text-center txt1">Vous êtes nouveau ici ? <a class="txt1" href="register.php">S'inscrire</a></p>
-            <?php if (! empty($message)) { ?>
-              <p class="txt1"><?php echo $message; ?></p>
-            <?php } ob_end_flush();?>
           </div>
         </form>
       </div>

@@ -2,8 +2,6 @@
 session_start();
 
 ob_start();
-
-
   // Initialiser la session
   // Vérifiez si l'utilisateur est connecté, sinon redirigez-le vers la page de connexion
 if(!isset($_SESSION["email"])){
@@ -17,6 +15,7 @@ if(!isset($_GET["id_salle"]) || !isset($_GET["numero"])){
 
 $id_salle = $_GET["id_salle"];
 $numero = $_GET["numero"];
+$dateValue = $_GET['date']; 
 
 $arrContextOptions=array(
   "ssl"=>array(
@@ -37,7 +36,7 @@ $today = date('Y-m-d');
 
 if (isset($_REQUEST['Date'], $_REQUEST['nombresPersonnes'], $_REQUEST['debut'], $_REQUEST['fin'], $_REQUEST['intitule'])){
 
-  $date = $_REQUEST['Date']; 
+  $date = $_REQUEST['Date'];
   $nbPersonnes = $_REQUEST['nombresPersonnes'];
   $debut = $_REQUEST['debut'];
   $fin = $_REQUEST['fin'];
@@ -46,7 +45,6 @@ if (isset($_REQUEST['Date'], $_REQUEST['nombresPersonnes'], $_REQUEST['debut'], 
   $numero = $_REQUEST['numero'];
 
   $response = array('id_user' => $_SESSION['id_user'], 'date' => $date, "heure_debut" => $debut, "heure_fin" => $fin, "intitule" => $intitule, "nb_personnes" => $nbPersonnes, "id_salle" => $id_salle, "id_prof" => NULL);
-
   $postString = http_build_query($response, '', '&');
 
   $opts = array(
@@ -89,7 +87,7 @@ if (isset($_REQUEST['Date'], $_REQUEST['nombresPersonnes'], $_REQUEST['debut'], 
         <div class="row">
           <div class="form-group col-6">
             <label>Date: </label>
-            <input type="Date" name="Date" min="<?php echo $today ?>" class="form-control"> 
+            <input type="Date" name="Date" value="<?php echo $dateValue ?>" min="<?php echo $dateValue ?>" class="form-control"> 
           </div>
           <div class="form-group col-6">
             <label>Nombre de Personnes: </label>
