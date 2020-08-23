@@ -65,7 +65,7 @@ ob_end_flush();
 			<form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
 				<table width="100%">
 					<theads>
-						<tr><div style="text-align:center">Disponible actuellement</div></tr><br>
+						<tr><div style="text-align:center">Salles réservées en attente</div></tr><br>
 					</thead>
 					<tbody>
 						<?php       
