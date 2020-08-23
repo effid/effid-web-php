@@ -56,14 +56,14 @@ ob_start();
           <?php }  echo "<br/>"; ob_end_flush();?>
           <div class="container-login100-form-btn">
             <button class="login100-form-btn">
-              Login
+              Connexion
             </button>
           </div>
 
           <div class="text-center p-t-90">
-            <a class="txt1" href="#">
+            <!--<a class="txt1" href="#">
               Forgot Password?
-            </a>
+            </a>-->
             <p class="text-center txt1">Vous êtes nouveau ici ? <a class="txt1" href="register.php">S'inscrire</a></p>
           </div>
         </form>
