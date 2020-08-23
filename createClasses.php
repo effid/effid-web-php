@@ -77,7 +77,7 @@ ob_end_flush();
       </div>
       <div class="buttonCentre">
         <button style="color: white; text-align: center;">
-          Register
+          Enregistrer
         </button>
       </div>
     </div>

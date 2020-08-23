@@ -92,7 +92,7 @@ if (isset($_REQUEST['Numero'], $_REQUEST['Etage'], $_REQUEST['Type'], $_REQUEST[
 			</div>
 			<div class="buttonCentre">
 				<button style="color: white; text-align: center;">
-					Register
+					Enregistrer
 				</button>
 			</div>
 		</div>
