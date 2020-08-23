@@ -33,7 +33,7 @@ ob_end_flush();
           ),
         );  
 
-        $response = file_get_contents("https://apollonian.fr:10000/salles", false, stream_context_create($arrContextOptions));
+        $response = file_get_contents("https://api:10000/salles", false, stream_context_create($arrContextOptions));
         $json = json_decode($response);
 
         $arrContextOptions=array(
@@ -46,7 +46,7 @@ ob_end_flush();
         {
           $date = $_REQUEST['DateResa'];
 
-          $result = file_get_contents("https://apollonian.fr:10000/salles/reservees/".$date."", false, stream_context_create($arrContextOptions));
+          $result = file_get_contents("https://api:10000/salles/reservees/".$date."", false, stream_context_create($arrContextOptions));
           $jsonReserves = json_decode($result);
         }else{
         }
