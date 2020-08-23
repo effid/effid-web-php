@@ -57,9 +57,9 @@ ob_end_flush();
               <label style="margin: 0.4vw 2vw 0 5vw; ">Date : </label>
               <input type="Date" name="DateResa" class="form-control col-2" min="<?php echo $today ?>" required/>
               <label style="margin: 0.4vw 2vw 0 2vw">Heure début : </label>
-              <input type="Time" name="TimeResaDebut" min="08:00:00" max="13:00:00" class="form-control col-2" required/>
+              <input type="Time" name="TimeResaDebut" class="form-control col-2" required/>
               <label style="margin: 0.4vw 2vw 0 2vw">Heure fin: </label>
-              <input type="Time" name="TimeResaFin" min="13:30:00" max="23:00:00" class="form-control col-2" required/>  
+              <input type="Time" name="TimeResaFin" class="form-control col-2" required/>  
             </div>
           </thead>
           <tbody>
